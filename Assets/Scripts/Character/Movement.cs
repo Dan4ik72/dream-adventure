@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            Jump();
+            Jump();        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,6 +69,7 @@ public class Movement : MonoBehaviour
         {
             _isGrounded = true;
             _g = true;
+            _charAnimator.SetBool("isGrounded", true);
         }
     }
 
@@ -84,7 +85,11 @@ public class Movement : MonoBehaviour
     private void Jump()
     {
         if (_isGrounded == true)
+        {
             _rigidbody.AddForce(Vector3.up * _jumpSpeed, ForceMode.Impulse);
+
+            _charAnimator.SetBool("isGrounded", false);
+        }
     }
 
     private void Move()
