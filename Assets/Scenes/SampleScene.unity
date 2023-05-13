@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33033076}
-  - component: {fileID: 33033075}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -140,19 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &33033075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33033074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cae3644ccb1b904aa16916db0fd447e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movement: {fileID: 1499479136}
 --- !u!4 &33033076
 Transform:
   m_ObjectHideFlags: 0
@@ -404,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd02542d63afe3409b003740976931f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isGrounded: 1
 --- !u!1 &1499479135
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,8 +401,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1499479138}
   - component: {fileID: 1499479137}
-  - component: {fileID: 1499479136}
   - component: {fileID: 1499479139}
+  - component: {fileID: 1499479140}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -423,22 +410,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1499479136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499479135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4245018a7bda949b1a1d71256efba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 100
-  _jumpForce: 5
-  _rotationSpeed: 10
-  _groundTrigger: {fileID: 1275915749}
 --- !u!54 &1499479137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -486,6 +457,27 @@ CapsuleCollider:
   m_Height: 5.048807
   m_Direction: 1
   m_Center: {x: -0.017889977, y: 2.4459505, z: 0}
+--- !u!114 &1499479140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499479135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f649ed1e3d0c6154abded43e90b136d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 55
+  _stopSpeed: 1
+  _limitVelocity: {x: 4, y: 4, z: 4}
+  _visualModelRotationSpeed: 10
+  _ground:
+    serializedVersion: 2
+    m_Bits: 0
+  _jumpSpeed: 75
+  _jumpDownAcceleration: 200
 --- !u!1 &2040105507
 GameObject:
   m_ObjectHideFlags: 0
