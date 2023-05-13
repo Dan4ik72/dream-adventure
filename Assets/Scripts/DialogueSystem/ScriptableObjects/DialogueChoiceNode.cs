@@ -6,10 +6,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue/Create new choice node")]
 public class DialogueChoiceNode : DialogueNode
 {
-    [SerializeField] private List<DialogueChoice> _choices = new List<DialogueChoice>(2);
+    [SerializeField] private DialogueChoice _goodChoice;
+    [SerializeField] private DialogueChoice _badChoice;
+
+    private DialogueChoice _playerChoice;
+
+    public override DialogueNodeType DialogueNodeType => DialogueNodeType.Choice;
 
     public override bool TryGetNextDialogueNode(out DialogueNode node)
     {
-        throw new System.NotImplementedException();
+        node = _playerChoice.NextNode;
+
+        return true;
     }
 }

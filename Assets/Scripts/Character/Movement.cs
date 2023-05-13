@@ -1,3 +1,4 @@
+using DialogueEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -10,6 +11,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask _ground;
     [SerializeField] private float _jumpSpeed = 75;
     [SerializeField] private float _jumpDownAcceleration = 200;
+
+    [SerializeField] private Animator _charAnimator;
 
     private bool _isGrounded = false;
     private Rigidbody _rigidbody;
@@ -34,6 +37,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (_g == true)
         {
             _rigidbody.velocity = new Vector3(_prevVelocity.x, _rigidbody.velocity.y, _prevVelocity.z);
@@ -95,11 +99,13 @@ public class Movement : MonoBehaviour
             Vector3 tar = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
             var angle = Quaternion.Euler(new Vector3(0, -Vector3.SignedAngle(tar, Vector3.forward, Vector3.up)));
             transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, _visualModelRotationSpeed);
+            _charAnimator.SetBool("isRunning", true);
         }
         else
         {
             Vector3 target = new Vector3(0, _rigidbody.velocity.y, 0);
             _rigidbody.velocity = Vector3.MoveTowards(_rigidbody.velocity, target, _stopSpeed);
+            _charAnimator.SetBool("isRunning", false);
         }
     }
 
