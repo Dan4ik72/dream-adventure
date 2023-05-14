@@ -33,6 +33,7 @@ public class Movement : MonoBehaviour
     private void OnDisable()
     {
         _rigidbody.velocity = Vector3.zero;
+        _charAnimator.SetBool("isRunning", false);
     }
 
     private void FixedUpdate()
